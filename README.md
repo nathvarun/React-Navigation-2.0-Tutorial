@@ -14,15 +14,16 @@ Project Files for React Navigation 2.0 Tutorial UnsureProgrammer Youtube
 - ## Each Tutorial Has its own Branch
     - ### To see all the branches 
         ```sh
-        $ git branch -all
+        $ git branch --all
         ```
     - ### Expected Output 
         ```sh
-       $ git branch -all
-      * 1-stacknavigator
-      remotes/origin/1-stacknavigator
-      remotes/origin/2-tabnavigator
-      remotes/origin/HEAD -> origin/1-stacknavigator
+       $ git branch --all
+      * master
+        remotes/origin/1-stacknavigator
+        remotes/origin/2-tabnavigator
+        remotes/origin/HEAD -> origin/master
+        remotes/origin/master
       ```
     - ### You are currently on the 1st Tutorial StackNavigator ( 01-stacknavigator)
     - ### To View The 2nd Tutorial - TabNavigator
