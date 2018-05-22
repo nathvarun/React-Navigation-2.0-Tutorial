@@ -27,9 +27,9 @@ Project Files for React Navigation 2.0 Tutorial UnsureProgrammer Youtube
         remotes/origin/HEAD -> origin/master
         remotes/origin/master
       ```
-    - ### You are currently on the 1st Tutorial StackNavigator ( 01-stacknavigator)
-    - ### To View The 2nd Tutorial - TabNavigator
+    - ### You are currently on the master branch
+    - ### To View The 1st Tutorial - StackNavigator
         ```sh
-           $ git checkout 2-tabnavigator 
+           $ git checkout 1-stacknavigator 
         ```
 - That way you can switch between project files of different tutorials!
