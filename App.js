@@ -2,10 +2,26 @@ import React, { Component } from "react";
 import {
   View,
   Text,
-  StyleSheet
+  StyleSheet,
+  SafeAreaView
 } from "react-native";
 import { createMaterialBottomTabNavigator } from 'react-navigation-material-bottom-tabs'
+import { createMaterialTopTabNavigator } from 'react-navigation'
 import Icon from 'react-native-vector-icons/Ionicons'
+
+export default class App extends Component {
+  render() {
+    return (
+      <SafeAreaView style={{
+        flex: 1, backgroundColor: '#f2f2f2'
+      }}>
+
+        <AppTabNavigator />
+      </SafeAreaView>
+    )
+  }
+}
+
 class HomeScreen extends Component {
   render() {
     return (
@@ -26,7 +42,7 @@ class SettingsScreen extends Component {
 }
 
 
-export default createMaterialBottomTabNavigator({
+const AppTabNavigator = createMaterialTopTabNavigator({
   Home: {
     screen: HomeScreen,
     navigationOptions: {
@@ -39,7 +55,7 @@ export default createMaterialBottomTabNavigator({
   Settings: {
     screen: SettingsScreen,
     navigationOptions: {
-      tabBarLabel: 'Home',
+      tabBarLabel: 'Settings',
       tabBarIcon: ({ tintColor }) => (
         <Icon name="ios-settings" color={tintColor} size={24} />
       )
@@ -48,8 +64,17 @@ export default createMaterialBottomTabNavigator({
 }, {
     initialRouteName: 'Home',
     // order: ['Settings', 'Home'],
-    activeTintColor: 'white',
-    shifting: true
+    tabBarOptions: {
+      activeTintColor: 'orange',
+      inactiveTintColor: 'grey',
+      style: {
+        backgroundColor: '#f2f2f2'
+      },
+      indicatorStyle: {
+        height: 0
+      },
+      showIcon: true
+    }
   })
 
 const styles = StyleSheet.create({
