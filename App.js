@@ -4,20 +4,18 @@ import {
   Text,
   StyleSheet
 } from "react-native";
-
-import { createBottomTabNavigator } from 'react-navigation'
+import { createMaterialBottomTabNavigator } from 'react-navigation-material-bottom-tabs'
 import Icon from 'react-native-vector-icons/Ionicons'
-
-export class Home extends Component {
+class HomeScreen extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text>Open Up App.js to start working with your app</Text>
+        <Text>Tab Navigator Tutorial 2!</Text>
       </View>
     );
   }
 }
-export class Settings extends Component {
+class SettingsScreen extends Component {
   render() {
     return (
       <View style={styles.container}>
@@ -26,9 +24,11 @@ export class Settings extends Component {
     );
   }
 }
-export default createBottomTabNavigator({
+
+
+export default createMaterialBottomTabNavigator({
   Home: {
-    screen: Home,
+    screen: HomeScreen,
     navigationOptions: {
       tabBarLabel: 'Home',
       tabBarIcon: ({ tintColor }) => (
@@ -37,27 +37,20 @@ export default createBottomTabNavigator({
     }
   },
   Settings: {
-    screen: Settings,
+    screen: SettingsScreen,
     navigationOptions: {
-      tabBarLabel: 'Settings',
+      tabBarLabel: 'Home',
       tabBarIcon: ({ tintColor }) => (
         <Icon name="ios-settings" color={tintColor} size={24} />
       )
     }
   }
-
-}, {//router config
-    initialRouteName: 'Settings',
-    order: ['Settings', 'Home'],
-    //navigation for complete tab navigator
-    navigationOptions: {
-      tabBarVisible: true
-    },
-    tabBarOptions: {
-      activeTintColor: 'red',
-      inactiveTintColor: 'grey'
-    }
-  });
+}, {
+    initialRouteName: 'Home',
+    // order: ['Settings', 'Home'],
+    activeTintColor: 'white',
+    shifting: true
+  })
 
 const styles = StyleSheet.create({
   container: {
