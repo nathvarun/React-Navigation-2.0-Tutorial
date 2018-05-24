@@ -64,11 +64,16 @@ const AppTabNavigator = createMaterialTopTabNavigator({
 }, {
     initialRouteName: 'Home',
     // order: ['Settings', 'Home'],
+    tabBarPosition: 'bottom',
+    swipeEnabled: true,
+    animationEnabled: false,
     tabBarOptions: {
       activeTintColor: 'orange',
       inactiveTintColor: 'grey',
       style: {
-        backgroundColor: '#f2f2f2'
+        backgroundColor: '#f2f2f2',
+        borderTopWidth: 0.5,
+        borderTopColor: 'grey'
       },
       indicatorStyle: {
         height: 0
