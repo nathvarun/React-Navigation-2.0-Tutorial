@@ -33,3 +33,14 @@ Project Files for React Navigation 2.0 Tutorial UnsureProgrammer Youtube
            $ git checkout 1-stacknavigator 
         ```
 - That way you can switch between project files of different tutorials!
+
+## Demo
+
+<div float="left">
+<a href="https://imgflip.com/gif/2fu1vm"><img src="https://i.imgflip.com/2fu1vm.gif" title="made at imgflip.com"/></a>
+<a href="https://imgflip.com/gif/2fu1zf"><img src="https://i.imgflip.com/2fu1zf.gif" title="made at imgflip.com"/></a>
+<a href="https://imgflip.com/gif/2fu24b"><img src="https://i.imgflip.com/2fu24b.gif" title="made at imgflip.com"/></a>
+<a href="https://imgflip.com/gif/2fu2pe"><img src="https://i.imgflip.com/2fu2pe.gif" title="made at imgflip.com"/></a>
+<a href="https://imgflip.com/gif/2fu3bh"><img src="https://i.imgflip.com/2fu3bh.gif" title="made at imgflip.com"/></a>
+<a href="https://imgflip.com/gif/2fu3k4"><img src="https://i.imgflip.com/2fu3k4.gif" title="made at imgflip.com"/></a>
+</div>
