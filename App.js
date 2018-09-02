@@ -39,9 +39,22 @@ const AuthStackNavigator = createStackNavigator({
 const AppTabNavigator = createBottomTabNavigator({
   HomeScreen: {
     screen: HomeScreen,
+    navigationOptions: {
+      tabBarLabel: 'HOME',
+      tabBarIcon: () => (
+        <Icon name="ios-home-outline" size={24} />
+      )
+    }
   },
   Settings: {
-    screen: SettingsScreen
+    screen: SettingsScreen,
+    navigationOptions: {
+      tabBarLabel: 'SETTINGS',
+      tabBarIcon: () => (
+        <Icon name="ios-settings-outline" size={24} />
+      )
+    }
+
   }
 })
 
