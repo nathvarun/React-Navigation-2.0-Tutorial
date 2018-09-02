@@ -2,19 +2,22 @@ import React, { Component } from "react";
 import {
     View,
     Text,
-    StyleSheet
+    StyleSheet,
+    Button
 } from "react-native";
 
-class HomeScreen extends Component {
+class WelcomeScreen extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <Text>HomeScreen</Text>
+                <Button title="Sign In" onPress={() => this.props.navigation.navigate('SignIn')} />
+                <Button title="Sign Up" onPress={() => this.props.navigation.navigate('SignUp')} />
             </View>
         );
     }
 }
-export default HomeScreen;
+export default WelcomeScreen
+    ;
 
 const styles = StyleSheet.create({
     container: {

@@ -3,84 +3,84 @@ import {
   View,
   Text,
   StyleSheet,
-  SafeAreaView
+  TouchableOpacity
 } from "react-native";
-import { createMaterialBottomTabNavigator } from 'react-navigation-material-bottom-tabs'
-import { createMaterialTopTabNavigator } from 'react-navigation'
 import Icon from 'react-native-vector-icons/Ionicons'
-
-export default class App extends Component {
-  render() {
-    return (
-      <SafeAreaView style={{
-        flex: 1, backgroundColor: '#f2f2f2'
-      }}>
-
-        <AppTabNavigator />
-      </SafeAreaView>
-    )
-  }
-}
-
-class HomeScreen extends Component {
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text>Tab Navigator Tutorial 2!</Text>
-      </View>
-    );
-  }
-}
-class SettingsScreen extends Component {
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text>Settings</Text>
-      </View>
-    );
-  }
-}
+/**
+ * createSwitchNavigator - Only Show ONE SCREEN/STACK at one time
+ *  1. Loading Screen
+ *  2. Authentication StackNavigator
+ *    - Auth Welcome Screen
+ *    - SignIn Screen
+ *    - Sign Up Screen
+ *  3. AppDrawerNavigator
+ *    - App StackNavigator (to give a common header to the tabs)
+ *       - App TabNavigator
+ *         - Home Tab
+ *         - Settings Tab
+ */
 
 
-const AppTabNavigator = createMaterialTopTabNavigator({
-  Home: {
+import { createSwitchNavigator, createStackNavigator, createDrawerNavigator, createBottomTabNavigator } from 'react-navigation'
+import AuthLoadingScreen from './screens/AuthLoadingScreen'
+import WelcomeScreen from './screens/WelcomeScreen'
+import SignInScreen from './screens/SignInScreen'
+import SignUpScreen from './screens/SignUpScreen'
+import HomeScreen from './screens/HomeScreen'
+import SettingsScreen from './screens/SettingsScreen'
+
+
+const AuthStackNavigator = createStackNavigator({
+  Welcome: WelcomeScreen,
+  SignIn: SignInScreen,
+  SignUp: SignUpScreen
+})
+
+const AppTabNavigator = createBottomTabNavigator({
+  HomeScreen: {
     screen: HomeScreen,
-    navigationOptions: {
-      tabBarLabel: 'Home',
-      tabBarIcon: ({ tintColor }) => (
-        <Icon name="ios-home" color={tintColor} size={24} />
-      )
-    }
   },
   Settings: {
-    screen: SettingsScreen,
-    navigationOptions: {
-      tabBarLabel: 'Settings',
-      tabBarIcon: ({ tintColor }) => (
-        <Icon name="ios-settings" color={tintColor} size={24} />
-      )
-    }
+    screen: SettingsScreen
   }
-}, {
-    initialRouteName: 'Home',
-    // order: ['Settings', 'Home'],
-    tabBarPosition: 'bottom',
-    swipeEnabled: true,
-    animationEnabled: false,
-    tabBarOptions: {
-      activeTintColor: 'orange',
-      inactiveTintColor: 'grey',
-      style: {
-        backgroundColor: '#f2f2f2',
-        borderTopWidth: 0.5,
-        borderTopColor: 'grey'
-      },
-      indicatorStyle: {
-        height: 0
-      },
-      showIcon: true
-    }
-  })
+})
+
+const AppStackNavigator = createStackNavigator({
+  AppTabNavigator: {
+    screen: AppTabNavigator,
+    navigationOptions: ({ navigation }) => ({
+      title: 'Your App',
+      headerLeft: (
+        <TouchableOpacity onPress={() => navigation.toggleDrawer()}>
+          <View style={{ paddingHorizontal: 10 }}>
+            <Icon name="md-menu" size={24} />
+          </View>
+        </TouchableOpacity>
+      )
+    })
+  }
+})
+
+AppTabNavigator.navigationOptions = ({ navigation }) => {
+  let { routeName } = navigation.state.routes[navigation.state.index];
+
+  // You can do whatever you like here to pick the title based on the route name
+  let headerTitle = routeName;
+
+  return {
+    headerTitle,
+  };
+};
+
+const AppDrawerNavigator = createDrawerNavigator({
+  Home: AppStackNavigator
+})
+
+export default createSwitchNavigator({
+  AuthLoading: AuthLoadingScreen,
+  Auth: AuthStackNavigator,
+  App: AppDrawerNavigator
+})
 
 const styles = StyleSheet.create({
   container: {

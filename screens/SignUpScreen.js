@@ -2,26 +2,19 @@ import React, { Component } from "react";
 import {
     View,
     Text,
-    StyleSheet,
-    Button
+    StyleSheet
 } from "react-native";
 
-class LoginScreen extends Component {
-
-    static navigationOptions = {
-        header: null
-    }
-
+class SignUpScreen extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <Button title="Go To Home Screen"
-                    onPress={() => this.props.navigation.navigate('Home')} />
+                <Text>SignUpScreen</Text>
             </View>
         );
     }
 }
-export default LoginScreen;
+export default SignUpScreen;
 
 const styles = StyleSheet.create({
     container: {

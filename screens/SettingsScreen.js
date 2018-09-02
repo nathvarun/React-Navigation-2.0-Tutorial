@@ -2,19 +2,26 @@ import React, { Component } from "react";
 import {
     View,
     Text,
-    StyleSheet
+    StyleSheet,
+    Button,
+    AsyncStorage
 } from "react-native";
 
-class HomeScreen extends Component {
+class SettingsScreen extends Component {
+
+    signOut = async () => {
+        AsyncStorage.clear()
+        this.props.navigation.navigate('AuthLoading')
+    }
     render() {
         return (
             <View style={styles.container}>
-                <Text>HomeScreen</Text>
+                <Button title="Sign Out" onPress={this.signOut} />
             </View>
         );
     }
 }
-export default HomeScreen;
+export default SettingsScreen;
 
 const styles = StyleSheet.create({
     container: {

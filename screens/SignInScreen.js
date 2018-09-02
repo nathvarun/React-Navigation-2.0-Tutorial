@@ -2,19 +2,28 @@ import React, { Component } from "react";
 import {
     View,
     Text,
-    StyleSheet
+    StyleSheet,
+    Button,
+    AsyncStorage
 } from "react-native";
 
-class HomeScreen extends Component {
+class SignInScreen extends Component {
+
+    signIn = async () => {
+        await AsyncStorage.setItem('userToken', 'varun')
+
+        this.props.navigation.navigate('App')
+    }
+
     render() {
         return (
             <View style={styles.container}>
-                <Text>HomeScreen</Text>
+                <Button title="Complete Sign In" onPress={this.signIn} />
             </View>
         );
     }
 }
-export default HomeScreen;
+export default SignInScreen;
 
 const styles = StyleSheet.create({
     container: {
